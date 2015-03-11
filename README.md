@@ -2,7 +2,7 @@
 --
     import "github.com/nickvanw/meh"
 
-Package meh provides a simple client for the meh.com API
+meh provides a simple client for the meh.com API
 
 ## Usage
 
@@ -11,18 +11,21 @@ Package meh provides a simple client for the meh.com API
 ```go
 func WithClient(client *http.Client) func(c *Client)
 ```
+WithClient changes the http client from the default API client
 
 #### func  WithKey
 
 ```go
 func WithKey(key string) func(c *Client)
 ```
+WithKey is a config method to set up the meh.com API key
 
 #### func  WithURL
 
 ```go
 func WithURL(urlStr string) func(c *Client)
 ```
+WithURL changes the base URL of the meh.com API
 
 #### type Client
 
@@ -31,6 +34,7 @@ type Client struct {
 }
 ```
 
+Client is a Meh Go API client
 
 #### func  NewClient
 

@@ -12,6 +12,7 @@ const (
 	apiVer  = "1"
 )
 
+// Client is a Meh Go API client
 type Client struct {
 	key string
 	url *url.URL
