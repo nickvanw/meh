@@ -1,6 +1,7 @@
 package meh
 
 import (
+	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"net/http"
@@ -23,9 +24,19 @@ type Client struct {
 // NewClient returns a new Meh API Client
 func NewClient(conf ...func(c *Client)) *Client {
 	base, _ := url.Parse(baseURL)
+
+	tr := &http.Transport{
+		TLSClientConfig: &tls.Config{
+			MaxVersion: tls.VersionTLS11,
+		},
+	}
+	hc := &http.Client{
+		Transport: tr,
+	}
+
 	c := &Client{
 		url:    base,
-		client: http.DefaultClient,
+		client: hc,
 	}
 	for _, v := range conf {
 		v(c)
